@@ -18,6 +18,7 @@ for el in data:
 
 product = input()
 available_robots = deque(available_robots)
+
 while not product == "End":
     products.append(product)
     product = input()
