@@ -1,5 +1,6 @@
 from collections import deque
-numbers = deque(input().split())
+
+numbers = deque([int(x) for x in input().split()])
 
 while numbers:
     print(numbers.pop(),end=" ")
