@@ -1,24 +1,24 @@
 from collections import deque
-petrol_pumps = int(input())
-pumps = deque()
+count_gas_stations = int(input())
+gas_stations = deque()
 
-for _ in range(petrol_pumps):
-    pump_info = [int(x) for x in input().split()]
-    pumps.append(pump_info)
+for fueling in range(count_gas_stations):
+    gas_stations.append([int(x) for x in input().split()])
 
-
-for attempt in range(petrol_pumps):
+for trip in range(count_gas_stations):
+    full_trip = True
     tank = 0
-    full_circle = True
-    for petrol, distance in pumps:
-        tank += petrol
-        if distance > tank:
-            full_circle = False
+    for fuel,distance in gas_stations:
+        tank += fuel
+        if tank < distance:
+            full_trip = False
             break
         else:
             tank -= distance
-    if full_circle:
-        print(attempt)
+    if full_trip:
+        print(trip)
         break
     else:
-        pumps.append(pumps.popleft())
+        gas_stations.append(gas_stations.popleft())
+
+
