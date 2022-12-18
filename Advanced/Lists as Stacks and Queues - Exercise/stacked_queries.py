@@ -1,23 +1,17 @@
-count_commands = int(input())
-stack_queries = []
-
-
-def check_stack_size():
-    if len(stack_queries) != 0:
-        return True
-
-
-for _ in range(count_commands):
+from collections import deque
+number_lines = int(input())
+stack_queries = deque()
+for _ in range(number_lines):
     command = input()
-    if command.startswith("1"):
-        __, number = command.split()
-        stack_queries.append(int(number))
-    elif check_stack_size():
-        if command.startswith("2"):
+    if command == "2":
+        if stack_queries:
             stack_queries.pop()
-        elif command.startswith("3"):
-            print(max(stack_queries))
-        elif command.startswith("4"):
-            print(min(stack_queries))
-
-print(", ".join(str(stack_queries.pop()) for n in range(len(stack_queries))))
+    elif command == "3":
+        print(max(stack_queries))
+    elif command == "4":
+        print(min(stack_queries))
+    else:
+        command,number = command.split()
+        stack_queries.append(int(number))
+stack_queries = (deque(reversed(stack_queries)))
+print(*stack_queries,sep=", ")
