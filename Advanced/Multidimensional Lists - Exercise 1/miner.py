@@ -3,21 +3,29 @@ def check_location(r,c):
     global row
     global column
     global matrix
-    global end_reached
     if 0 <= r < matrix_size and 0 <= c < matrix_size:
         location_symbol = matrix[r][c]
         if location_symbol == "c":
             coals_counter += 1
             if coals_counter == coals_count:
+                matrix[row][column] = "*"
+                row = r
+                column = c
+                matrix[row][column] = "s"
                 print(f"You collected all coal! ({row}, {column})")
                 exit()
         elif location_symbol == "e":
+            matrix[row][column] = "*"
+            row = r
+            column = c
+            matrix[row][column] = "s"
             print(f"Game over! ({row}, {column})")
             exit()
         if command == "left" or command == "right" or command == "up" or command == "down":
             matrix[row][column] = "*"
             row = r
             column = c
+            matrix[row][column] = "s"
 
 
 matrix_size = int(input())
@@ -59,9 +67,8 @@ for command in commands:
         check_location(left_row,left_column)
 
 coals_left = 0
-for x in range(len(matrix)):
-    for y in range(len(matrix[x])):
-        if matrix[row][column] == "c":
+for k in range(len(matrix)):
+    for m in range(len(matrix[k])):
+        if matrix[k][m] == "c":
             coals_left += 1
 print(f"{coals_left} pieces of coal left. {(row,column)}")
-
