@@ -43,3 +43,178 @@ if sum(result.values()) != 0:
         else:
             break
     print(result[max_direction])
+
+# rows = int(input())
+# matrix = [[int(x) if x.isdigit() else x for x in input().split()] for _ in range(rows)]
+# movement = {
+#     "UP": [-1, 0], "DOWN": [1, 0], "LEFT": [0, -1], "RIGHT": [0, 1]
+# }
+# best_sum = 0
+# best_way = ""
+#
+# def check_valid_index(row, col):
+#     if 0 <= row < rows and 0 <= col < rows:
+#         return True
+#
+#
+# def check_left_sum(row, col):
+#     global best_sum
+#     global best_way
+#     right_sum = 0
+#     row += movement['LEFT'][0]
+#     col += movement['LEFT'][1]
+#     current_item = matrix[row][col]
+#     if not check_valid_index(row, col):
+#         return
+#     if current_item == "X":
+#         return
+#     for x in range(row, rows):
+#         for m in range(col, rows):
+#             egg_value = matrix[x][m]
+#             if egg_value == "X":
+#                 return
+#             right_sum += egg_value
+#
+#             if right_sum > best_sum:
+#                 best_sum = right_sum
+#                 best_way = "left"
+#             row += movement['LEFT'][0]
+#             col += movement['LEFT'][1]
+#             if not check_valid_index(row, col):
+#                 return
+#
+#
+#
+# def check_right_sum(row, col):
+#     global best_sum
+#     global best_way
+#     right_sum = 0
+#     row += movement['RIGHT'][0]
+#     col += movement['RIGHT'][1]
+#     current_item = matrix[row][col]
+#     if not check_valid_index(row, col):
+#         return
+#     if current_item == "X":
+#         return
+#     for x in range(row, rows):
+#         for m in range(col, rows):
+#             egg_value = matrix[x][m]
+#             if egg_value == "X":
+#                 return
+#             right_sum += egg_value
+#             if right_sum > best_sum:
+#                 best_sum = right_sum
+#                 best_way = "right"
+#             row += movement['RIGHT'][0]
+#             col += movement['RIGHT'][1]
+#             if not check_valid_index(row, col):
+#                 return
+#
+#
+#
+# def check_up_sum(row, col):
+#     global best_sum
+#     global best_way
+#     right_sum = 0
+#     row += movement['UP'][0]
+#     col += movement['UP'][1]
+#     current_item = matrix[row][col]
+#     if not check_valid_index(row, col):
+#         return
+#     if current_item == "X":
+#         return
+#     for x in range(row, rows):
+#         for m in range(col, rows):
+#             egg_value = matrix[x][m]
+#             if egg_value == "X":
+#                 return
+#             right_sum += egg_value
+#             if right_sum > best_sum:
+#                 best_sum = right_sum
+#                 best_way = "up"
+#             row += movement['UP'][0]
+#             col += movement['UP'][1]
+#             if not check_valid_index(row, col):
+#                 return
+#
+#
+# def check_down_sum(row, col):
+#     global best_sum
+#     global best_way
+#     right_sum = 0
+#     row += movement['DOWN'][0]
+#     col += movement['DOWN'][1]
+#     current_item = matrix[row][col]
+#     if not check_valid_index(row, col):
+#         return
+#     if current_item == "X":
+#         return
+#     for x in range(row, rows):
+#         for m in range(col, rows):
+#             egg_value = matrix[x][m]
+#             if egg_value == "X":
+#                 return
+#             right_sum += egg_value
+#             if right_sum > best_sum:
+#                 best_sum = right_sum
+#                 best_way = "down"
+#             row += movement['DOWN'][0]
+#             col += movement['DOWN'][1]
+#             if not check_valid_index(row, col):
+#                 return
+#
+# position = []
+# for row in range(rows):
+#     for col in range(rows):
+#         if matrix[row][col] == "B":
+#             position.append(row)
+#             position.append(col)
+#             break
+#     if position:
+#         break
+#
+#
+# if check_valid_index(position[0],position[1]):
+#     check_left_sum(position[0],position[1])
+#     check_right_sum(position[0],position[1])
+#     check_up_sum(position[0],position[1])
+#     check_down_sum(position[0],position[1])
+#
+# if best_way == "left":
+#     print(best_way)
+#     for r in range(position[0],rows):
+#         for c in range(position[1] +1,rows):
+#             if matrix[r][c] == "X":
+#                 break
+#             print(f"{[r, c]}")
+#         break
+#     print(best_sum)
+# if best_way == "right":
+#     print(best_way)
+#     for r in range(position[0],rows):
+#         for c in range(position[1] +1,rows):
+#             if matrix[r][c] == "X":
+#                 break
+#             print(f"{[r, c]}")
+#         break
+#     print(best_sum)
+#
+#
+# if best_way == "up":
+#     print(best_way)
+#     for r in range(position[0],rows):
+#         for c in range(position[1] +1,rows):
+#             if matrix[r][c] == "X":
+#                 break
+#             print(f"{[r, c]}")
+#         break
+#     print(best_sum)
+# if best_way == "down":
+#     print(best_way)
+#     for r in range(position[0],rows):
+#         for c in range(position[1] +1,rows):
+#             if matrix[r][c] == "X":
+#                 break
+#             print(f"{[r, c]}")
+#         break
+#     print(best_sum)
