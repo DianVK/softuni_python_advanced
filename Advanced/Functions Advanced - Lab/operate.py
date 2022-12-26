@@ -14,24 +14,7 @@ def operate(operator, *args):
     return result
 
 
-# from functools import reduce
-#
-#
-# def operate(operator, *args):
-#     if operator == "+":
-#         return reduce(lambda x, y: x + y, args)
-#     elif operator == "-":
-#         return reduce(lambda x, y: x - y, args)
-#     elif operator == "*":
-#         return reduce(lambda x, y: x * y, args)
-#     elif operator == "/":
-#         return reduce(lambda x, y: x / y, args)
-
-
 '''((((1+2)+3)+4)+5)'''
-# def operate(operator, *args):
-#     return reduce(lambda x, y: eval(f"{x} {operator} {y}"), args)
-
 '''x = 1
 eval('x+1')
 2'''
