@@ -13,10 +13,26 @@ def operate(operator, *args):
             result *= x
     return result
 
+# def operate(operator,*args):
+#     global result
+#     if operator == "+":
+#         result = 0
+#         for el in args:
+#             result += el
+#     elif operator == "-":
+#         result = 0
+#         for el in args:
+#             result -= el
+#     elif operator == "*":
+#         result = 1
+#         for el in args:
+#             result *= el
+#     elif operator == "/":
+#         result = 1
+#         for el in args:
+#             result /= el
+#     return result
 
-'''((((1+2)+3)+4)+5)'''
-'''x = 1
-eval('x+1')
-2'''
+
 print(operate("+", 1, 2, 3))
 print(operate("*", 3, 4))
