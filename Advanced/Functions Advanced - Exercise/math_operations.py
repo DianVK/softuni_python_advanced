@@ -1,4 +1,5 @@
 def math_operations(*args,**kwargs):
+    result = ""
     operators = kwargs
     numbers = [*args]
     counter = 0
@@ -10,12 +11,14 @@ def math_operations(*args,**kwargs):
             operators['a'] += item
         elif counter == 2:
             operators['s'] -= item
-        elif counter == 3 and int(item) != 0:
-            operators['d'] /= item
+        elif counter == 3:
+            if item != 0:
+                operators["d"] /= item
         elif counter == 4:
             operators['m'] *= item
     for item,value in sorted(operators.items(),key=lambda x: (-x[1], -len(x[0]), x[0])):
-        print(f"{item}: {value:.1f}")
+        result += f"{item}: {value:.1f}\n"
+    return result
 
 print(math_operations(2.1, 12.56, 0.0, -3.899, 6.0, -20.65, a=1, s=7, d=33, m=15))
 print(math_operations(-1.0, 0.5, 1.6, 0.5, 6.1, -2.8, 80.0, a=0, s=(-2.3), d=0, m=0))
