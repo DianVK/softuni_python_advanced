@@ -1,12 +1,64 @@
-size_of_battlefield = int(input())
-matrix = [[x for x in input()]for _ in range(size_of_battlefield)]
-start_pos = []
+def check_location(r,c):
+    global naval_dmg_taken_counter,matrix_size,matrix,naval_mines,enemy_killed_counter,row,column
+    if 0 <= r < matrix_size and 0 <= c < matrix_size:
+        location_symbol = matrix[r][c]
+        if location_symbol == "*":
+            naval_dmg_taken_counter += 1
+            if naval_dmg_taken_counter == naval_mines:
+                print( f"Mission failed, U-9 disappeared! Last known coordinates [{r}, {c}]!")
+                for x in range(len(matrix)):
+                    print(*matrix[x])
+                return
+        elif location_symbol == "C":
+            enemy_killed_counter += 1
+            if enemy_killed_counter == 3:
+                print(f"Mission accomplished, U-9 has destroyed all battle cruisers of the enemy!")
+                for x in range(len(matrix)):
+                    print(*matrix[x])
+                return
+        if command == "left" or command == "right" or command == "up" or command == "down":
+            matrix[row][column] = "-"
+            row = r
+            column = c
+            matrix[row][column] = "S"
+
+
+
+matrix_size = int(input())
+matrix = [[x for x in input()] for x in range(matrix_size)]
+
+movement = {"up": [-1, 0], "down": [+1, 0], "left": [0, -1], "right": [0, +1]}
+row,column = 0,0
+naval_mines = 0
+naval_dmg_taken_counter = 0
+enemy_killed_counter = 0
 
 for x in range(len(matrix)):
     for y in range(len(matrix[x])):
         if matrix[x][y] == "S":
-            start_pos = x,y
+            row,column = x,y
+        elif matrix[x][y] == "*":
+            naval_mines += 1
 
-movement = {"up": [-1, 0], "down": [+1, 0], "left": [0, -1], "right": [0, +1]}
-
-
+while enemy_killed_counter != 3:
+    command = input()
+    left_row = int(row)
+    left_column = int(column)
+    if command == "left":
+        left_row += movement['left'][0]
+        left_column += movement['left'][1]
+        check_location(left_row,left_column)
+    elif command == "right":
+        left_row += movement['right'][0]
+        left_column += movement['right'][1]
+        check_location(left_row,left_column)
+    elif command == "up":
+        left_row += movement['up'][0]
+        left_column += movement['up'][1]
+        check_location(left_row,left_column)
+    elif command == "down":
+        left_row += movement['down'][0]
+        left_column += movement['down'][1]
+        check_location(left_row,left_column)
+    if naval_dmg_taken_counter == naval_mines:
+        exit()

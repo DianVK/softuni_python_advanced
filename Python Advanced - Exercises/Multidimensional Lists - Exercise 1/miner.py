@@ -4,8 +4,8 @@ def check_location(r,c):
     global column
     global matrix
     if 0 <= r < matrix_size and 0 <= c < matrix_size:
-        location_symbol = matrix[r][c]
-        if location_symbol == "c":
+        symbol_location = matrix[r][c]
+        if symbol_location == "c":
             coals_counter += 1
             if coals_counter == coals_count:
                 matrix[row][column] = "*"
@@ -14,7 +14,7 @@ def check_location(r,c):
                 matrix[row][column] = "s"
                 print(f"You collected all coal! ({row}, {column})")
                 exit()
-        elif location_symbol == "e":
+        elif symbol_location == "e":
             matrix[row][column] = "*"
             row = r
             column = c
