@@ -4,10 +4,11 @@ def check_location(r,c):
         r = rows - 1
     elif c == -1:
         c = columns - 1
-    if r > rows:
+    if r >= rows:
         r = 0
-    elif c > columns:
+    elif c >= columns:
         c = 0
+
     if 0 <= r < rows and 0 <= c < columns:
         location_symbol = matrix[r][c]
         if location_symbol == "D":
@@ -17,7 +18,7 @@ def check_location(r,c):
         elif location_symbol == "C":
             cookies_counter += 1
         if direction == "left" or direction == "right" or direction == "up" or direction == "down":
-            matrix[r_pos][c_pos] = "X"
+            matrix[r_pos][c_pos] = "x"
             r_pos = r
             c_pos = c
             matrix[r_pos][c_pos] = "Y"
@@ -25,9 +26,9 @@ def check_location(r,c):
             print("Merry Christmas!")
             collected = True
             return
-        #now_matrix = matrix
-        #print(*now_matrix,sep="\n")
-        #print("**************")
+        # now_matrix = matrix
+        # print(*now_matrix,sep="\n")
+        # print("**************")
 
 
 rows,columns = [int(x) for x in input().split(", ")]
@@ -79,6 +80,10 @@ while command != "End" or not collected:
             now_row += movement['down'][0]
             now_col += movement['down'][1]
             check_location(now_row, now_col)
+        if collected:
+            break
+    if collected:
+        break
     command = input()
     if command == "End":
         break
