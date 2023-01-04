@@ -46,7 +46,7 @@ if materials:
     print("Materials left: ",end="")
     print(*materials,sep=", ")
 elif magic_levels:
-    print("Magic  left: ",end="")
+    print("Magic left: ",end="")
     print(*magic_levels,sep=", ")
 if gemstone != 0:
     print(f"Gemstone: {gemstone}")
