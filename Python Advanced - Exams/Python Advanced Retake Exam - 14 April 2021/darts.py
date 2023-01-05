@@ -1,5 +1,5 @@
-def check_location(r,c):
-    global matrix_size,matrix,current_player,first_player_score,second_player_score,first_player_counter,second_player_counter
+def check_location(r, c):
+    global matrix_size, matrix, current_player, first_player_score, second_player_score, first_player_counter, second_player_counter, winner
     if 0 <= r < matrix_size and 0 <= c < matrix_size:
         current_symbol = matrix[r][c]
         if current_symbol.isnumeric():
@@ -9,11 +9,9 @@ def check_location(r,c):
                 second_player_score -= int(current_symbol)
         elif current_symbol == "B":
             if first_player_turn:
-                print(f"{first_name} won the game with {first_player_counter} throws!")
-                exit()
+                first_player_score = 0
             elif second_player_turn:
-                print(f"{second_name} won the game with {second_player_counter} throws!")
-                exit()
+                second_player_score = 0
         elif current_symbol == "D":
             current_sum = 0
             for o in range(matrix_size):
@@ -52,7 +50,6 @@ first_player_turn = False
 second_player_turn = False
 first_player_counter = 0
 second_player_counter = 0
-
 
 while first_player_score > 0 and second_player_score > 0:
     location = input()
