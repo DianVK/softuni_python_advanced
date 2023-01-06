@@ -7,6 +7,7 @@ class Rhombus:
         self.draw = []
 
     def make_rhombus(self):
+        global row
         for row in range(1, self.stars + 1):
             if row == 1:
                 self.draw.append((self.stars - row) * " " + row * "*")
@@ -25,14 +26,6 @@ class Rhombus:
 r = Rhombus(number_of_rhombus)
 r.make_rhombus()
 print(r)
-
-
-
-
-
-
-
-
 
 #
 #
