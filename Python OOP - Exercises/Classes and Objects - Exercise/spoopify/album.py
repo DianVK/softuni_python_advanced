@@ -1,38 +1,41 @@
 from song import Song
 
 
-class Album():
-    def __init__(self, name: str, *songs):
+class Album:
+    def __init__(self, name, *songs):
         self.name = name
         self.published = False
         self.songs = [x for x in songs]
 
     def add_song(self, song: Song):
         if song.single:
-            return f"Cannot add {self.name}. It's a single"
+            return f"Cannot add {song.name}. It's a single"
         if self.published:
-            return f"Cannot add songs. Album is published."
-        if song in self.songs:
-            return f"Song is already in the album."
+            return "Cannot add songs. Album is published."
+        if song.name in [x.name for x in self.songs]:
+            return "Song is already in the album."
+
         self.songs.append(song)
-        return f"Song {song} has been added to the album {self.name}."
+        return f"Song {song.name} has been added to the album {self.name}."
 
     def remove_song(self, song_name: str):
-        if song_name not in self.songs:
+        if song_name not in [x.name for x in self.songs]:
             return "Song is not in the album."
         if self.published:
             return "Cannot remove songs. Album is published."
-        self.songs.remove(song_name)
-        return f"Removed song {song_name} from album {self.name}."
+        for show in self.songs:
+            if show.name == song_name:
+                del show
+                return f"Removed song {song_name} from album {self.name}."
 
     def publish(self):
-        if not self.published:
-            self.published = True
-            return f"Album {self.name} has been published."
-        return f"Album {self.name} is already published."
+        if self.published:
+            return f"Album {self.name} is already published."
+        self.published = True
+        return f"Album {self.name} has been published."
 
     def details(self):
-        result = f"Album {self.name}"
-        for music in self.songs:
-            result += f"\n== {music}"
-        return result
+        text = f"Album {self.name}\n"
+        for song in self.songs:
+            text += f"== {song}\n"
+        return text

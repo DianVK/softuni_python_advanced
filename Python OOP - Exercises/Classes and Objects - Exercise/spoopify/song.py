@@ -1,7 +1,7 @@
-class Song():
-    def __init__(self, name: str, length: float, single: bool):
+class Song:
+    def __init__(self, name, length, single):
         self.name = name
-        self.length = length
+        self.length = float(length)
         self.single = single
 
     def get_info(self):
