@@ -1,6 +1,6 @@
 class Shop():
 
-    def __init__(self,name: str, type: str, capacity: int):
+    def __init__(self, name: str, type: str, capacity: int):
         self.capacity = capacity
         self.type = type
         self.name = name
@@ -10,13 +10,13 @@ class Shop():
     def small_shop(name: str, type: str):
         return Shop(name, type, 10)
 
-    def add_item(self, item_name:str):
+    def add_item(self, item_name: str):
         if self.capacity > sum(self.items.values()):
             self.items[item_name] = self.items.get(item_name, 0) + 1
             return f"{item_name} added to the shop"
         return "Not enough capacity in the shop"
 
-    def remove_item(self, item_name:str, amount:int):
+    def remove_item(self, item_name: str, amount: int):
         if item_name not in self.items or self.items[item_name] - amount < 0:
             return f"Cannot remove {amount} {item_name}"
 
