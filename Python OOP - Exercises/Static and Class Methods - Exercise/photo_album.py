@@ -1,13 +1,13 @@
 from math import ceil
 
 
-class PhotoAlbum():
+class PhotoAlbum:
 
-    def __init__(self, pages: int):
+    def __init__(self, pages):
         self.pages = pages
         self.photos = [[] for _ in range(pages)]
 
-    @staticmethod
+    @classmethod
     def from_photos_count(cls, photos_count: int):
         return cls(ceil(photos_count / 4))
 
@@ -19,7 +19,7 @@ class PhotoAlbum():
         return "No more free slots"
 
     def display(self):
-        output = ["-----------", ]
+        output = ["-----------",]
         for row in range(len(self.photos)):
             how_long = len(self.photos[row])
             if how_long > 0:
