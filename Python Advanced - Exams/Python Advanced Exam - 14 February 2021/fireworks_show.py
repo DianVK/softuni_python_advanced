@@ -14,7 +14,7 @@ while fireworks and explosive:
     if current_firework <= 0 or current_explosive <= 0:
         if current_firework <= 0:
             explosive.append(current_explosive)
-        if current_explosive <=0:
+        if current_explosive <= 0:
             fireworks.appendleft(current_firework)
     else:
         values_sum = current_explosive + current_firework
@@ -36,9 +36,9 @@ if perfect_show:
 else:
     print(f"Sorry. You can't make the perfect firework show.")
 if fireworks:
-    print(f"Firework Effects left: ",end="")
-    print(*fireworks,sep=", ")
+    print(f"Firework Effects left: ", end="")
+    print(*fireworks, sep=", ")
 if explosive:
-    print(f"Explosive Power left: ",end="")
-    print(*explosive,sep=", ")
+    print(f"Explosive Power left: ", end="")
+    print(*explosive, sep=", ")
 print(f"Palm Fireworks: {count_palm}\nWillow Fireworks: {count_willow}\nCrossette Fireworks: {count_crossette}")
