@@ -3,7 +3,7 @@ class Category:
         self.id = id
         self.name = name
 
-    def edit(self, new_name: str):  # – edit the name of the category
+    def edit(self, new_name: str):
         self.name = new_name
 
     def __repr__(self):
