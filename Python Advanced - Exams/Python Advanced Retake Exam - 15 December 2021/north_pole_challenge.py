@@ -1,5 +1,5 @@
-def check_location(r,c):
-    global decorations_count,gifts_count,cookies_count,r_pos,c_pos,decorations_counter,gifts_counter,cookies_counter,collected
+def check_location(r, c):
+    global decorations_count, gifts_count, cookies_count, r_pos, c_pos, decorations_counter, gifts_counter, cookies_counter, collected
     if r == -1:
         r = rows - 1
     elif c == -1:
@@ -31,10 +31,10 @@ def check_location(r,c):
         # print("**************")
 
 
-rows,columns = [int(x) for x in input().split(", ")]
+rows, columns = [int(x) for x in input().split(", ")]
 matrix = [[x for x in input().split()] for x in range(rows)]
 
-r_pos,c_pos = 0,0
+r_pos, c_pos = 0, 0
 decorations_count = 0
 gifts_count = 0
 cookies_count = 0
@@ -43,11 +43,10 @@ gifts_counter = 0
 cookies_counter = 0
 collected = False
 
-
 for x in range(len(matrix)):
     for y in range(len(matrix[x])):
         if matrix[x][y] == "Y":
-            r_pos,c_pos = x,y
+            r_pos, c_pos = x, y
         if matrix[x][y] == "D":
             decorations_count += 1
         elif matrix[x][y] == "G":
@@ -60,7 +59,7 @@ movement = {"up": [-1, 0], "down": [+1, 0], "left": [0, -1], "right": [0, +1]}
 command = input()
 while command != "End" or not collected:
     command = command.split("-")
-    direction,step = command[0],int(command[1])
+    direction, step = command[0], int(command[1])
     for j in range(step):
         now_row = int(r_pos)
         now_col = int(c_pos)
@@ -93,4 +92,4 @@ print(f"- {decorations_counter} Christmas decorations")
 print(f"- {gifts_counter} Gifts")
 print(f"- {cookies_counter} Cookies")
 for x in matrix:
-    print(*x,sep=" ")
+    print(*x, sep=" ")
