@@ -1,9 +1,9 @@
 def forecast(*args):
     result = ""
     forecast_all_citys = {
-        'Sunny':[],
-        'Cloudy':[],
-        'Rainy':[]
+        'Sunny': [],
+        'Cloudy': [],
+        'Rainy': []
     }
     for items in args:
         city = items[0]

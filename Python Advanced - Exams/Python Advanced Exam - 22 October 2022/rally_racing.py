@@ -1,5 +1,5 @@
 def racing(r, c):
-    global row, column,teleport,passed_km
+    global row, column, teleport, passed_km
     if 0 <= r < matrix_size and 0 <= c < matrix_size:
         current_element = matrix[r][c]
         if current_element == ".":
@@ -69,26 +69,26 @@ while command != "End":
     if command == "left":
         left_row += movement['left'][0]
         left_column += movement['left'][1]
-        racing(left_row,left_column)
+        racing(left_row, left_column)
     elif command == "right":
         left_row += movement['right'][0]
         left_column += movement['right'][1]
-        racing(left_row,left_column)
+        racing(left_row, left_column)
     elif command == "up":
         left_row += movement['up'][0]
         left_column += movement['up'][1]
-        racing(left_row,left_column)
+        racing(left_row, left_column)
     elif command == "down":
         left_row += movement['down'][0]
         left_column += movement['down'][1]
-        racing(left_row,left_column)
+        racing(left_row, left_column)
     command = input()
 
 print(f"Racing car {racing_number} DNF.")
 print(f"Distance covered {passed_km} km.")
 for x in range(len(matrix)):
     current_list = matrix[x]
-    print(*current_list,sep="")
+    print(*current_list, sep="")
 
 ################################################
 # size_matrix = int(input())

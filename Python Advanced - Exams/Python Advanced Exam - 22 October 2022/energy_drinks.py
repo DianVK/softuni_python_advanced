@@ -19,8 +19,8 @@ while caffeine and energy_drinks:
             total_caffeine -= 30
 
 if energy_drinks:
-    print(f"Drinks left: ",end="")
-    print(*energy_drinks,sep=", ")
+    print(f"Drinks left: ", end="")
+    print(*energy_drinks, sep=", ")
 else:
     print("At least Stamat wasn't exceeding the maximum caffeine.")
 

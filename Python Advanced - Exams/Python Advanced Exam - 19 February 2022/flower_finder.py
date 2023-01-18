@@ -1,4 +1,5 @@
 from collections import deque
+
 vowels = deque(x for x in input().split())
 consonants = [x for x in input().split()]
 
@@ -8,7 +9,6 @@ lotus = []
 daffodil = []
 
 flower_found = False
-
 
 while not flower_found and consonants and vowels:
     current_vowel = vowels.popleft()
@@ -29,7 +29,6 @@ while not flower_found and consonants and vowels:
             if flower_found:
                 break
 
-
     if current_vowel in "tulip" and current_vowel not in tulip:
         tulip.append(current_vowel)
         if len(tulip) == 5:
@@ -46,7 +45,6 @@ while not flower_found and consonants and vowels:
             if flower_found:
                 break
 
-
     if current_vowel in "lotus" and current_vowel not in lotus:
         lotus.append(current_vowel)
         if len(lotus) == 5:
@@ -62,7 +60,6 @@ while not flower_found and consonants and vowels:
             flower_found = True
             if flower_found:
                 break
-
 
     if current_vowel in "daffodil" and current_vowel not in daffodil:
         daffodil.append(current_vowel)
@@ -83,8 +80,8 @@ while not flower_found and consonants and vowels:
 if not flower_found:
     print("Cannot find any word!")
 if vowels:
-    print("Vowels left: ",end="")
-    print(*vowels,sep=" ")
+    print("Vowels left: ", end="")
+    print(*vowels, sep=" ")
 if consonants:
-    print("Consonants left: ",end="")
-    print(*consonants,sep=" ")
+    print("Consonants left: ", end="")
+    print(*consonants, sep=" ")
