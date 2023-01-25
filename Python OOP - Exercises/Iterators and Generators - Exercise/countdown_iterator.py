@@ -1,5 +1,5 @@
 class countdown_iterator:
-    def __init__(self,number:int):
+    def __init__(self, number: int):
         self.number = number + 1
 
     def __iter__(self):
@@ -11,6 +11,7 @@ class countdown_iterator:
 
         self.number -= 1
         return self.number
+
 
 iterator = countdown_iterator(10)
 for item in iterator:
