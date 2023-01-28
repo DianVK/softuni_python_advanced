@@ -1,4 +1,4 @@
-from song import Song
+from project.song import Song
 
 
 class Album:
