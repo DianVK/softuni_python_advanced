@@ -18,8 +18,7 @@ class ProductRepository:
                 del self.products[pos]
 
     def __repr__(self):
-        show = ""
-        for x in self.products:
-            if x.name not in show:
-                show += f"{x.name}: {x.quantity}\n"
-        return show.rstrip()
+        result = ""
+        for item in self.products:
+            result += f"{item.name}: {item.quantity}\n"
+        return result.rstrip()
