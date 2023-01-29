@@ -1,8 +1,8 @@
-class User():
+class User:
     def __init__(self, user_id: int, username: str):
-        self.books = []
         self.user_id = user_id
         self.username = username
+        self.books = list()
 
     def info(self):
         return ", ".join(sorted(self.books))
