@@ -19,5 +19,5 @@ class Team:
             return f"Player {player_name} not found"
         for x in self.__players:
             if x.name == player_name:
-                self.__players.remove(x)
+                del self.__players[x]
                 return
