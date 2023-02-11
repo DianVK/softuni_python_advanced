@@ -3,65 +3,130 @@ from project.dvd import DVD
 
 
 class MovieWorld:
-    def __init__(self, name):
+
+    def __init__(self, name: str):
         self.name = name
         self.customers = []
         self.dvds = []
 
     @staticmethod
-    def dvd_capacity():
-        return 15
-
-    @staticmethod
     def customer_capacity():
         return 10
 
-    def __get_customer(self, id):
-        return [customer for customer in self.customers if id == customer.id][0]
-
-    def __get_dvd(self, id):
-        return [x for x in self.dvds if x.id == id][0]
+    @staticmethod
+    def dvd_capacity():
+        return 15
 
     def add_customer(self, customer: Customer):
         if len(self.customers) < MovieWorld.customer_capacity():
             self.customers.append(customer)
+            return
 
     def add_dvd(self, dvd: DVD):
         if len(self.dvds) < MovieWorld.dvd_capacity():
             self.dvds.append(dvd)
+            return
 
     def rent_dvd(self, customer_id: int, dvd_id: int):
-        find_dvd = self.__get_dvd(dvd_id)
-        find_customer = self.__get_customer(customer_id)
+        for customer in self.customers:
+            if customer.customer_id == customer_id:
+                for x in customer.rented_dvds:
+                    if x.dvd_id == dvd_id:
+                        return f"{customer.customer_name} has already rented {x.dvd_name}"
+            elif customer.customer_id != customer_id:
+                for x in customer.rented_dvds:
+                    if x.dvd_id == dvd_id:
+                        return "DVD is already rented"
+        for customer in self.customers:
+            if customer.customer_id == customer_id:
+                for x in self.dvds:
+                    if x.dvd_id == dvd_id:
+                        if customer.age < x.age_restriction:
+                            return f"{customer.name} should be at least {x.age_restriction} to rent this movie"
+                        customer.rented_dvds.append(x)
+                        x.is_rented = True
+                        return f"{customer.name} has successfully rented {x.name}"
 
-        if find_dvd in find_customer.rented_dvds:
-            return f"{find_customer.name} has already rented {find_dvd.name}"
+    def return_dvd(self,customer_id, dvd_id):
+        for customer in self.customers:
+            if customer.customer_id == customer_id:
+                for dvd in customer.customer.rented_dvds:
+                    if dvd.dvd_id == dvd_id:
+                        del customer.customer.rented_dvds[dvd]
+                        return f"{customer.customer_name} has successfully returned {dvd.name}"
 
-        if find_dvd.is_rented:
-            return "DVD is already rented"
-
-        if find_customer.age < find_dvd.age_restriction:
-            return f"{find_customer.name} should be at least {find_dvd.age_restriction} to rent this movie"
-
-        find_customer.rented_dvds.append(find_dvd)
-        find_dvd.is_rented = True
-        return f"{find_customer.name} has successfully rented {find_dvd.name}"
-
-    def return_dvd(self, customer_id, dvd_id):
-        find_dvd = self.__get_dvd(dvd_id)
-        find_customer = self.__get_customer(customer_id)
-
-        if find_dvd in find_customer.rented_dvds:
-            find_customer.rented_dvds.remove(find_dvd)
-            find_dvd.is_rented = False
-            return f"{find_customer.name} has successfully returned {find_dvd.name}"
-
-        return f"{find_customer.name} does not have that DVD"
+                return f"{customer.customer_name} does not have that DVD"
 
     def __repr__(self):
         output = ""
-        for x in self.customers:
-            output += f"{str(x)}\n"
-        for x in self.dvds:
-            output += f"{str(x)}\n"
+        for customer in self.customers:
+            output += f"{str(customer)}\n"
+        for dvd in self.dvds:
+            output += f"{str(dvd)}\n"
         return output.rstrip()
+
+
+# class MovieWorld:
+#     def __init__(self, name):
+#         self.name = name
+#         self.customers = []
+#         self.dvds = []
+#
+#     @staticmethod
+#     def dvd_capacity():
+#         return 15
+#
+#     @staticmethod
+#     def customer_capacity():
+#         return 10
+#
+#     def __get_customer(self, id):
+#         return [customer for customer in self.customers if id == customer.id][0]
+#
+#     def __get_dvd(self, id):
+#         return [x for x in self.dvds if x.id == id][0]
+#
+#     def add_customer(self, customer: Customer):
+#         if len(self.customers) < MovieWorld.customer_capacity():
+#             self.customers.append(customer)
+#
+#     def add_dvd(self, dvd: DVD):
+#         if len(self.dvds) < MovieWorld.dvd_capacity():
+#             self.dvds.append(dvd)
+#
+#     def rent_dvd(self, customer_id: int, dvd_id: int):
+#         find_dvd = self.__get_dvd(dvd_id)
+#         find_customer = self.__get_customer(customer_id)
+#
+#         if find_dvd in find_customer.rented_dvds:
+#             return f"{find_customer.name} has already rented {find_dvd.name}"
+#
+#         if find_dvd.is_rented:
+#             return "DVD is already rented"
+#
+#         if find_customer.age < find_dvd.age_restriction:
+#             return f"{find_customer.name} should be at least {find_dvd.age_restriction} to rent this movie"
+#
+#         find_customer.rented_dvds.append(find_dvd)
+#         find_dvd.is_rented = True
+#         return f"{find_customer.name} has successfully rented {find_dvd.name}"
+#
+#     def return_dvd(self, customer_id, dvd_id):
+#         find_dvd = self.__get_dvd(dvd_id)
+#         find_customer = self.__get_customer(customer_id)
+#
+#         if find_dvd in find_customer.rented_dvds:
+#             find_customer.rented_dvds.remove(find_dvd)
+#             find_dvd.is_rented = False
+#             return f"{find_customer.name} has successfully returned {find_dvd.name}"
+#
+#         return f"{find_customer.name} does not have that DVD"
+#
+#     def __repr__(self):
+#         output = ""
+#         for x in self.customers:
+#             output += f"{str(x)}\n"
+#         for x in self.dvds:
+#             output += f"{str(x)}\n"
+#         return output.rstrip()
+#
