@@ -1,41 +1,33 @@
 from math import floor
 
 
-class Integer():
-    def __init__(self, value: int):
+class Integer:
+
+    def __init__(self, value:int):
         self.value = value
 
-    @staticmethod
-    def from_float(float_value):
-        if isinstance(float_value, float):
+    @classmethod
+    def from_float(cls,float_value):
+        if isinstance(float_value,float):
             float_value = floor(float_value)
-            return Integer(int(float_value))
+            return cls(float_value)
         return "value is not a float"
 
-    @staticmethod
-    def from_roman(value):
-        numbers = {
-            'I': 1,
-            "II": 2,
-            "III": 3,
-            "IV": 4,
-            "V": 5,
-            "VI": 6,
-            "VII": 7,
-            "VIII": 8,
-            "IX": 9,
-            "X": 10,
-            "XIX": 19
-        }
-        for key, val in numbers.items():
-            if key == value:
-                value = int(val)
-                return Integer(int(value))
+    @classmethod
+    def from_roman(cls,value):
+        rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        int_val = 0
+        for i in range(len(value)):
+            if i > 0 and rom_val[value[i]] > rom_val[value[i - 1]]:
+                int_val += rom_val[value[i]] - 2 * rom_val[value[i - 1]]
+            else:
+                int_val += rom_val[value[i]]
+        return cls(int(int_val))
 
-    @staticmethod
-    def from_string(value):
+    @classmethod
+    def from_string(cls, value):
         if str(value).isdigit():
-            return Integer(int(value))
+            return cls(int(value))
         else:
             return "wrong type"
 
