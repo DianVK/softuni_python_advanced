@@ -1,34 +1,32 @@
 class Calculator:
+
     @staticmethod
     def add(*args):
-        return sum(args)
+        sum_all = 0
+        for x in args:
+            sum_all += x
+        return sum_all
 
     @staticmethod
     def multiply(*args):
-        result = 0
-        for num in args:
-            if result == 0:
-                result += num
-            else:
-                result *= num
-        return result
+        multiply_all = 1
+        for x in args:
+            multiply_all *= x
+        return multiply_all
 
     @staticmethod
     def divide(*args):
-        result = 0
-        for num in args:
-            if result == 0:
-                result += num
-            else:
-                result /= num
-        return result
+        divide_all = args[0]
+        for x in range(1, len(args)):
+            divide_all /= args[x]
+        return divide_all
 
     @staticmethod
     def subtract(*args):
-        result = args[0]
-        for x in args[1:]:
-            result -= x
-        return result
+        subtract_all = args[0]
+        for x in range(1, len(args)):
+            subtract_all -= args[x]
+        return subtract_all
 
 
 print(Calculator.add(5, 10, 4))
