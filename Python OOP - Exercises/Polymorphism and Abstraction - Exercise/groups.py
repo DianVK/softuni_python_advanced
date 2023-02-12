@@ -1,25 +1,27 @@
 class Person:
-    def __init__(self, name: str, surname: str):
-        self.surname = surname
-        self.name = name
 
-    def __add__(self, obj):
-        return Person(self.name, obj.surname)
+    def __init__(self, name: str, surname: str):
+        self.name = name
+        self.surname = surname
+
+    def __add__(self, other):
+        return Person(self.name, other.surname)
 
     def __repr__(self):
         return f"{self.name} {self.surname}"
 
 
 class Group:
-    def __init__(self, name:str, people: list):
-        self.people = people
+
+    def __init__(self, name: str, people: list):
         self.name = name
+        self.people = people
 
     def __len__(self):
         return len(self.people)
 
-    def __add__(self, obj):
-        return Group(f"{self.name} {obj.name}", self.people + obj.people)
+    def __add__(self, other):
+        return Group(f"{self.name} {other.name}", self.people + other.people)
 
     def __getitem__(self, index):
         return f"Person {index}: {str(self.people[index])}"
