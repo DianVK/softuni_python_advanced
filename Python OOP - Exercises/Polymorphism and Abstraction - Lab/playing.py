@@ -1,10 +1,12 @@
 class Guitar:
-    def play(self):
+    @staticmethod
+    def play():
         return "Playing the guitar"
 
 
 class Children:
-    def play(self):
+    @staticmethod
+    def play():
         return "Children are playing"
 
 
@@ -13,6 +15,7 @@ def start_playing(obj):
 
 
 guitar = Guitar()
-children = Children()
 print(start_playing(guitar))
+
+children = Children()
 print(start_playing(children))
