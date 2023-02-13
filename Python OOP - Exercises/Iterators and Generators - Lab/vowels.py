@@ -1,18 +1,17 @@
 class vowels:
     ALL_VOWELS = "AEIUYOaeiuyo"
 
-    def __init__(self, text: str):
-        self.text = text
-        self.vowels_in_text = [el for el in self.text if el in vowels.ALL_VOWELS]
+    def __init__(self,sequence: str):
+        self.sequence = sequence
+        self.sorted_vowels = [x for x in self.sequence if x in vowels.ALL_VOWELS]
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if not self.vowels_in_text:
-            raise StopIteration
-
-        return self.vowels_in_text.pop(0)
+        if self.sorted_vowels:
+            return self.sorted_vowels.pop(0)
+        raise StopIteration
 
 
 my_string = vowels('Abcedifuty0o')
