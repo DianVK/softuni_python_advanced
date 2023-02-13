@@ -1,4 +1,5 @@
 class custom_range:
+
     def __init__(self, start: int, end: int):
         self.start = start
         self.end = end
@@ -11,12 +12,11 @@ class custom_range:
         if self.counter > self.end:
             raise StopIteration
 
-        result = self.counter
+        output = self.counter
         self.counter += 1
+        return output
 
-        return result
 
-
-for el in custom_range(1, 10):
-
-    print(el)
+one_to_ten = custom_range(1, 10)
+for num in one_to_ten:
+    print(num)
