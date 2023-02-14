@@ -1,9 +1,17 @@
-def genrange(start: int, end: int):
-    for num in range(start, end + 1):
+def genrange(start,end):
+    num = start
+    while num <= end:
         yield num
+        num += 1
 
 
 print(list(genrange(1, 10)))
+
+
+# def genrange(start: int, end: int):
+#     for num in range(start, end + 1):
+#         yield num
+
 
 # class genrange:
 #     def __init__(self,start:int,end:int):
