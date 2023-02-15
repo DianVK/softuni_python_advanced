@@ -1,16 +1,16 @@
-def vowel_filter(func):
-    vowels = "AEIOUYaeiouy"
+def vowel_filter(function):
+    all_vowels = "AaEeIiOoUuYy"
 
     def wrapper():
-        result = func()
-        return [x for x in result if x in vowels]
+        result = function()
+        return [x for x in result if x in all_vowels]
 
     return wrapper
 
 
-# @vowel_filter
-# def get_letters():
-#     return ["a", "b", "c", "d", "e"]
-#
-#
-# print(get_letters())
+@vowel_filter
+def get_letters():
+    return ["a", "b", "c", "d", "e"]
+
+
+print(get_letters())
