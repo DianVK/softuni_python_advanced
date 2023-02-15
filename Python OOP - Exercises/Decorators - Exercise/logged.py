@@ -1,6 +1,8 @@
 def logged(function):
+
     def wrapper(*args):
-        return f"you called {function.__name__}({', '.join(str(arg) for arg in args)})\nit returned {function(*args)}"
+
+        return f"you called {function.__name__}{args}\nit returned {function(*args)}"
 
     return wrapper
 
@@ -11,4 +13,18 @@ def func(*args):
 
 
 print(func(4, 4, 4))
-print(func.__name__)
+
+
+@logged
+def sum_func(a, b):
+    return a + b
+
+
+print(sum_func(1, 4))
+
+
+# def logged(function):
+#     def wrapper(*args):
+#         return f"you called {function.__name__}({', '.join(str(arg) for arg in args)})\nit returned {function(*args)}"
+#
+#     return wrapper
