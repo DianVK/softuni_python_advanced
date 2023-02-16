@@ -10,6 +10,7 @@ def cache(func):
 
     return wrapper
 
+
 @cache
 def fibonacci(n):
     if n < 2:
@@ -18,6 +19,5 @@ def fibonacci(n):
         return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-fibonacci(50)
+fibonacci(4)
 print(fibonacci.log)
-
