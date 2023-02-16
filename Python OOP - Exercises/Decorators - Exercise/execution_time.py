@@ -3,12 +3,12 @@ import time
 
 def exec_time(func):
     def wrapper(*args):
+
         start = time.time()
         func(*args)
         end = time.time()
 
         return end - start
-
     return wrapper
 
 
@@ -20,4 +20,4 @@ def loop(start, end):
     return total
 
 
-print(loop(1, 10_000_000))
+print(loop(1, 10000000))
