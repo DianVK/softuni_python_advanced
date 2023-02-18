@@ -65,6 +65,5 @@ class TestGunitSquad(TestCase):
                          "Damage: 10\n", str(self.hero))
 
 
-
 if __name__ == "__main__":
     main()
