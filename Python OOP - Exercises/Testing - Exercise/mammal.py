@@ -25,5 +25,6 @@ class TestGunitSquad(TestCase):
         result = self.mammal.info()
         self.assertEqual("Dino is of type BIG", result)
 
+
 if __name__ == "__main__":
     main()
