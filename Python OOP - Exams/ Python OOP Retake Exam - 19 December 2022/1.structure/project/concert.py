@@ -66,7 +66,7 @@ class Concert:
 
     @expenses.setter
     def expenses(self, value):
-        Validation.check_number_less_than(value, 0,"Expenses cannot be a negative number!")
+        Validation.check_number_less_than(value, 0, "Expenses cannot be a negative number!")
         self.__expenses = value
 
     @property
@@ -75,7 +75,8 @@ class Concert:
 
     @place.setter
     def place(self, value):
-        Validation.check_if_string_is_two_characters_long(value, "Place must contain at least 2 chars. It cannot be empty!")
+        Validation.check_if_string_is_two_characters_long(value,
+                                                          "Place must contain at least 2 chars. It cannot be empty!")
         self.__place = value
 
     def __str__(self):
